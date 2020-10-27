@@ -16,7 +16,11 @@ public class CommandWords
     // A mapping between a command word and the CommandWord
     // associated with it.
     private HashMap<String, CommandWord> validCommands;
-
+    //constand array that holds all valid command words
+       // private static final String[] validCommands= {
+            //"go", "quit", "help", "look","eat"
+        //};
+    
     /**
      * Constructor - initialise the command words.
      */
@@ -29,7 +33,8 @@ public class CommandWords
             }
         }
     }
-
+    
+    
     /**
      * Find the CommandWord associated with a command word.
      * @param commandWord The word to look up.
