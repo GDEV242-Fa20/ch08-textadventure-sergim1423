@@ -1,3 +1,4 @@
+
 import java.util.HashMap;
 
 /**
@@ -17,9 +18,9 @@ public class CommandWords
     // associated with it.
     private HashMap<String, CommandWord> validCommands;
     //constand array that holds all valid command words
-       // private static final String[] validCommands= {
-            //"go", "quit", "help", "look","eat"
-        //};
+        private static final String[] validCommands= {
+            "go", "quit", "help", "look","eat"
+        };
     
     /**
      * Constructor - initialise the command words.
@@ -33,7 +34,18 @@ public class CommandWords
             }
         }
     }
-    
+    /**
+     * Returns all valid commads.
+     */
+    public String getCommandList()
+    {
+        String returnString="";
+        for (String command : validCommands)
+        {
+            returnString = returnString + command + "";
+        }
+        return returnString;
+    }
     
     /**
      * Find the CommandWord associated with a command word.
@@ -70,5 +82,17 @@ public class CommandWords
             System.out.print(command + "  ");
         }
         System.out.println();
+        /**
+     * Print all valid commands to System.out. Supposed to be the
+     * new println but doesnt work
+     */
+    /*public void showAll()
+    {
+        for(String command : validCommands)
+        {
+            System.out.print(command + "");
+        }
+        System.out.println();
+    }*/
     }
 }

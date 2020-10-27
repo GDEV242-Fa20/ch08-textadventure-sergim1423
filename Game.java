@@ -155,8 +155,11 @@ public class Game
         System.out.println("around at the university.");
         System.out.println();
         System.out.println("Your command words are:");
-        parser.showCommands();
+        String str = parser.showCommands();
+        System.out.println(str);
     }
+
+    
 
     /** 
      * Try to go in one direction. If there is an exit, enter the new
