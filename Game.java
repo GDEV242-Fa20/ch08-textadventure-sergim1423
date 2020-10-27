@@ -32,7 +32,7 @@ public class Game
     /**
      * creating back command back one room
      */
-    private Room prevRoom;
+    private Room prevRoom=null;
     
     /**
      * Create all the rooms and link their exits together.
@@ -169,7 +169,8 @@ public class Game
         look();
         else if (commandWord.equals("eat"))
         System.out.println( "You have eaten now and you are not hungry anymore");
-
+        else if (commandWord.equals("back"))
+        backRoom();
         /*CommandWord commandWord = command.getCommandWord();
 
         switch (commandWord) {
@@ -235,10 +236,20 @@ public class Game
             System.out.println("There is no door!");
         }
         else {
+            prevRoom = currentRoom;
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
         }
     }
+    /**
+     * go back to previous room and display room info
+     */
+    private void backRoom()
+    {
+        currentRoom=prevRoom;
+        System.out.println(currentRoom.getLongDescription());
+    }
+    
     /**
      * prints current room descripion with available exits.
      * Prints exists if the room has exits.
