@@ -1,6 +1,7 @@
 import java.util.Set;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.ArrayList;
 
 /**
  * Class Room - a room in an adventure game.
@@ -18,9 +19,11 @@ import java.util.Iterator;
 
 public class Room 
 {
+    //stores name of room
     private String description;
     private HashMap<String, Room> exits;        // stores exits of this room.
-    private Item roomItem;
+    //holds all the item objects in the room
+    private ArrayList<Item> roomItem;
 
     /**
      * Create a room described "description". Initially, it has
@@ -31,8 +34,9 @@ public class Room
     public Room(String description, Item item) 
     {
         this.description = description;
-        exits = new HashMap<>();
-        this.roomItem=item;
+        exits = new HashMap<String,Room>();
+        roomItem = new ArrayList<Item>();
+        
     }
 
     /**
@@ -67,6 +71,31 @@ public class Room
         return "You are " + description + ".\n" + getExitString();
     }
 
+    /**
+     * Returns string of items in the room
+     */
+    public String getItemInRoom()
+    {
+        String returnItems ="Items in the room are:\n";
+        for(Item item:roomItem)
+        {
+            returnItems+=item.getItemDescription()+"\n";
+        }
+        return returnItems;
+    }
+    /**
+     * Adds an item to the room
+     * Adds name of item and Item object as value and holds 
+     * description of item and its weight
+     * @param item_name name of the item being specific
+     * @param descripton Clarfies description of item
+     * @param weight holds weight of item
+     */
+    public void addItem(Item item)
+    {
+        roomItem.add(item);
+    }
+    
     /**
      * Return a string describing the room's exits, for example
      * "Exits: north west".

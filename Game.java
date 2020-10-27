@@ -30,6 +30,11 @@ public class Game
     }
 
     /**
+     * creating back command back one room
+     */
+    private Room prevRoom;
+    
+    /**
      * Create all the rooms and link their exits together.
      */
     private void createRooms()
@@ -59,7 +64,26 @@ public class Game
         lab_Item);
         office = new Room("in the computing admin office",
         office_Item);
-        
+        //create Item objects
+        Item outsideItems[] = { new Item("Nothing",0),
+            new Item("Bench",0),
+            new Item("Tables", 50)};
+            Item theaterItem[] = {
+                new Item("Laptop", 400),
+                new Item("Seats", 30)};
+              Item pubItem[] = { new Item("Cups",20),
+                  new Item("Speakers",600)};
+                  Item officeItem[]={new Item("Couch",300),
+                      new Item("Stapler", 30)};
+                      Item labItem[]={
+                          new Item("Chairs",40),
+                          new Item("Smartphones", 50)};
+        //aray of item objects into their rooms
+        outside=addItemsToRoom(outside,outsideItems);
+        theater=addItemsToRoom(theater,theaterItem);
+        pub=addItemsToRoom(pub,pubItem);              
+        lab=addItemsToRoom(lab,labItem);
+        office=addItemsToRoom(office,officeItem);
         // initialise room exits
         outside.setExit("east", theater);
         outside.setExit("south", lab);
@@ -77,6 +101,18 @@ public class Game
         currentRoom = outside;  // start game outside
     }
 
+    /**
+     * Add the array of items to the room and return room object
+     */
+    private Room addItemsToRoom(Room room, Item items[])
+    {
+        for(int i=0;i<items.length; i++)
+        {
+            room.addItem(items[i]);
+        }
+        return room;
+    }
+    
     /**
      *  Main play routine.  Loops until end of play.
      */
