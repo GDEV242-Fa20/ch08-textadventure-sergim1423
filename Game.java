@@ -39,10 +39,32 @@ public class Game
      */
     private void createRooms()
     {
-        Room outside, theater, pub, lab, office;
+        Room outside, theater, pub, lab, office, conference, shed, 
+        dorm, basement, gym, library, courts, dining, cafeteria, nurse;
         // Item reference variables
         Item outside_Item, theater_Item, pub_Item,lab_Item,
-        office_Item;
+        office_Item, conference_Item, shed_Item, dorm_Item, basement_Item
+        , gym_Item, library_Item, courts_Item, dining_Item, cafeteria_Item
+        , nurse_Item;
+        conference_Item= new Item("Chairs: To sit on, to"+
+        "relax"+"Pass time",0);
+        shed_Item= new Item("Storage: To keep equipment in",600);
+        dorm_Item= new Item("Beds: To sleep on, to"+
+        "relax"+"Study",400);
+        basement_Item= new Item("Stores files: To gather information, to"+
+        "keep records",50);
+        gym_Item= new Item("Bench: To benchpress on, to"+
+        "lift wieghts"+"workout",500);
+        library_Item= new Item("Books: To read, to"+
+        "relax"+"gain knowledge",20);
+        courts_Item= new Item("Basketball hoops: To play on, to"+
+        "workout"+"Have fun ",200);
+        dining_Item= new Item("Tables: To sit on, to"+
+        "eat on"+"Have fun with friends",300);
+        cafeteria_Item= new Item("Cash register: To collect money , to"+
+        "accept money for food",60);
+        nurse_Item= new Item("Tylenol: To clear headaches, to"+
+        "relax"+"To cure illnesses",30);
         outside_Item = new Item("Ball: To play with, to"+
         "relieve stress"+"Pass time",0);
         theater_Item = new Item("Screen: To watch plays"+ 
@@ -64,6 +86,22 @@ public class Game
         lab_Item);
         office = new Room("in the computing admin office",
         office_Item);
+        conference = new Room("in a school meeting room",
+        conference_Item);
+        shed = new Room("outside across from courts",
+        shed_Item);
+        dorm = new Room("in the college for students",dorm_Item);
+        basement= new Room("under the college next to lab room"
+        ,basement_Item);
+        gym= new Room("in the gym above the cafeteria",gym_Item);
+        library= new Room("library room for students to study across of conference room"
+        , library_Item);
+        courts= new Room("outside of college for sports",courts_Item);
+        dining= new Room("in cafeteria for eating",dining_Item);
+        cafeteria= new Room("holds dining room and stores food"
+        ,cafeteria_Item);
+        nurse= new Room("next to gym to help with injuries and illnesses"
+        ,nurse_Item);
         //create Item objects
         Item outsideItems[] = { new Item("Nothing",0),
             new Item("Bench",0),
@@ -78,12 +116,53 @@ public class Game
                       Item labItem[]={
                           new Item("Chairs",40),
                           new Item("Smartphones", 50)};
+        Item conferenceItems[] ={
+            new Item("Bagels",20),
+            new Item("Coffee Machine", 60)}; 
+        Item shedItems[] ={
+            new Item("Balls",0),
+            new Item("Rackets",10)};
+        Item dormItems[] ={
+        new Item("Posters",5),
+        new Item("Pillows",20)};
+        Item basementItems[]={
+            new Item("Cabinets",50),
+            new Item("Lights",30)};
+        Item gymItems[]={
+            new Item("Weights",100),
+            new Item("Bar",45)};
+        Item libraryItems[]={
+            new Item("Desks",40),
+            new Item("Couch", 60)};
+        Item courtsItems[]={
+            new Item("Soccer courts", 400),
+            new Item("Volleyball courts", 600)};
+        Item diningItems[]={
+            new Item("Forks",10),
+            new Item("Spoon",10)};
+        Item cafeteriaItems[]={
+            new Item("Trays",15),
+            new Item("Change",0)};
+        Item nurseItems[]={
+            new Item("Thermometer",20),
+            new Item("Icepacks",30)};
         //aray of item objects into their rooms
         outside=addItemsToRoom(outside,outsideItems);
         theater=addItemsToRoom(theater,theaterItem);
         pub=addItemsToRoom(pub,pubItem);              
         lab=addItemsToRoom(lab,labItem);
         office=addItemsToRoom(office,officeItem);
+        conference=addItemsToRoom(conference,conferenceItems);
+        shed=addItemsToRoom(shed,shedItems);
+        dorm=addItemsToRoom(dorm,dormItems);
+        basement=addItemsToRoom(basement,basementItems);
+        gym=addItemsToRoom(gym,gymItems);
+        library=addItemsToRoom(library,libraryItems);
+        courts=addItemsToRoom(courts,courtsItems);
+        dining=addItemsToRoom(dining,diningItems);
+        cafeteria=addItemsToRoom(cafeteria,cafeteriaItems);
+        nurse=addItemsToRoom(nurse,nurseItems);
+        
         // initialise room exits
         outside.setExit("east", theater);
         outside.setExit("south", lab);
@@ -97,6 +176,20 @@ public class Game
         lab.setExit("east", office);
 
         office.setExit("west", lab);
+        conference.setExit("east",library);
+        shed.setExit("north",courts);
+        dorm.setExit("west",cafeteria);
+        basement.setExit("south",library);
+        gym.setExit("east",nurse);
+        library.setExit("west",conference);
+        library.setExit("north",basement);
+        courts.setExit("east",shed);
+        dining.setExit("west",cafeteria);
+        dining.setExit("east",outside);
+        cafeteria.setExit("east",dining);
+        cafeteria.setExit("north",theater);
+        nurse.setExit("south",lab);
+        nurse.setExit("west",gym);
 
         currentRoom = outside;  // start game outside
     }
