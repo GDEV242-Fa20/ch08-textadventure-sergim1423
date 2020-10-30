@@ -219,19 +219,14 @@ public class Game
                 
         boolean finished = false;
         while (! finished) {
-            if(counter>10)
-            {
-                System.out.println("Sorry, but time has run out");
-                finished=true;
-            }
-            else
-            {
+         
             Command command = parser.getCommand();
             finished = processCommand(command);
             counter++;
         }
         System.out.println("Thank you for playing.  Good bye.");
     }
+
 
     /**
      * Print out the opening message for the player.
@@ -293,18 +288,19 @@ public class Game
                 wantToQuit = quit(command);
                 break;
             case LOOK:
-                Look(command);
+                look();
                 break; 
             case EAT:
-            wantToEat=eat(command);
+            eat();
             break;
             case BACK:
-            Back(command);
+            //back(command);
             break;
-            
+        }
         
         return wantToQuit;
-    }
+    
+}
 
     // implementations of user commands:
 
@@ -331,16 +327,18 @@ public class Game
      */
     private void goRoom(Command command) 
     {
+         String direction = command.getSecondWord();
+
+        // Try to leave current room.
+        Room nextRoom = currentRoom.getExit(direction);
+        
         if(!command.hasSecondWord()) {
             // if there is no second word, we don't know where to go...
             System.out.println("Go where?");
             return;
         }
 
-        String direction = command.getSecondWord();
-
-        // Try to leave current room.
-        Room nextRoom = currentRoom.getExit(direction);
+       
 
         if (nextRoom == null) {
             System.out.println("There is no door!");
@@ -350,6 +348,13 @@ public class Game
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
         }
+    }
+    /**
+     * go eat
+     */
+    private void eat()
+    {
+        System.out.println("You have eaten now and you are not hungry anymore");
     }
     /**
      * go back to previous room and display room info
@@ -386,3 +391,5 @@ public class Game
         }
     }
 }
+
+

@@ -55,9 +55,9 @@ public class Room
      */
     public String getShortDescription()
     {
-        return "This is" + description + ".\n"+
-        roomItem.getItemDescription()+"\n"
-        + getExitString();
+        return "This is" + description + ".\n";//+
+        //roomItem.getItemDescription()+"\n"
+        //+ getExitString();
     }
 
     /**
