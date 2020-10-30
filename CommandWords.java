@@ -18,7 +18,7 @@ public class CommandWords
     // associated with it.
     private HashMap<String, CommandWord> validCommands;
     //constand array that holds all valid command words
-        private static final String[] validCommands= {
+        private static final String[] CommandValid= {
             "go", "quit", "help", "look","eat", "back"
         };
     
@@ -40,7 +40,7 @@ public class CommandWords
     public String getCommandList()
     {
         String returnString="";
-        for (String command : validCommands)
+        for (String command : CommandValid)
         {
             returnString = returnString + command + "";
         }

@@ -11,14 +11,15 @@
  *  rooms, creates the parser and starts the game.  It also evaluates and
  *  executes the commands that the parser returns.
  * 
- * @author  Michael Kölling and David J. Barnes
- * @version 2016.02.29
+ * @author  Sergius Manolov
+ * @version 10/29/20
  */
 
 public class Game 
 {
     private Parser parser;
     private Room currentRoom;
+    private int counter=0;
         
     /**
      * Create the game and initialise its internal map.
@@ -218,8 +219,16 @@ public class Game
                 
         boolean finished = false;
         while (! finished) {
+            if(counter>10)
+            {
+                System.out.println("Sorry, but time has run out");
+                finished=true;
+            }
+            else
+            {
             Command command = parser.getCommand();
             finished = processCommand(command);
+            counter++;
         }
         System.out.println("Thank you for playing.  Good bye.");
     }
@@ -246,7 +255,7 @@ public class Game
     {
         boolean wantToQuit = false;
         
-        if(command.isUnknown())
+        /*if(command.isUnknown())
         {
             System.out.println("I don't know what you mean...");
             return false;
@@ -264,7 +273,8 @@ public class Game
         System.out.println( "You have eaten now and you are not hungry anymore");
         else if (commandWord.equals("back"))
         backRoom();
-        /*CommandWord commandWord = command.getCommandWord();
+        */
+        CommandWord commandWord = command.getCommandWord();
 
         switch (commandWord) {
             case UNKNOWN:
@@ -283,9 +293,16 @@ public class Game
                 wantToQuit = quit(command);
                 break;
             case LOOK:
-                look(command);
+                Look(command);
                 break; 
-        */
+            case EAT:
+            wantToEat=eat(command);
+            break;
+            case BACK:
+            Back(command);
+            break;
+            
+        
         return wantToQuit;
     }
 
