@@ -250,12 +250,12 @@ public class Game
     {
         boolean wantToQuit = false;
         
-        /*if(command.isUnknown())
-        {
+        if(command.isUnknown()){
+        
             System.out.println("I don't know what you mean...");
             return false;
         }
-        String commandWord = command.getCommandWord();
+        String commandWord = command.getCommandWord().toString();
         if(commandWord.equals("help"))
         printHelp();
         else if (commandWord.equals("go"))
@@ -268,8 +268,8 @@ public class Game
         System.out.println( "You have eaten now and you are not hungry anymore");
         else if (commandWord.equals("back"))
         backRoom();
-        */
-        CommandWord commandWord = command.getCommandWord();
+        
+        /*CommandWord commandWord = command.getCommandWord();
 
         switch (commandWord) {
             case UNKNOWN:
@@ -295,12 +295,12 @@ public class Game
             break;
             case BACK:
             //back(command);
-            break;
-        }
+            break;*/
+        
         
         return wantToQuit;
     
-}
+    }
 
     // implementations of user commands:
 
@@ -391,5 +391,6 @@ public class Game
         }
     }
 }
+
 
 

@@ -19,7 +19,7 @@ public class CommandWords
     private HashMap<String, CommandWord> validCommands;
     //constand array that holds all valid command words
         private static final String[] CommandValid= {
-            "go", "quit", "help", "look","eat", "back"
+            " go " ,  " quit ", " help ", " look "," eat ", " back "
         };
     
     /**
